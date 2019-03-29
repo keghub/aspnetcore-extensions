@@ -38,7 +38,6 @@ namespace EMG.Extensions.AspNetCore.Filters
                         Error = exceptionInfo.EventId.Name,
                         Data = exceptionInfo.State,
                         Message = exceptionInfo.Formatter(exceptionInfo.State, context.Exception),
-                        RouteValues = descriptor.RouteValues,
                         AdditionalData = context.Exception.Data.PrepareForOutput(),
                     };
                 }
@@ -49,7 +48,6 @@ namespace EMG.Extensions.AspNetCore.Filters
                     error = new ErrorModel
                     {
                         Message = context.Exception.Message,
-                        RouteValues = descriptor.RouteValues,
                         AdditionalData = context.Exception.Data.PrepareForOutput(),
                     };
                 }
@@ -77,9 +75,6 @@ namespace EMG.Extensions.AspNetCore.Filters
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message { get; set; }
-
-        [JsonProperty("routeValues", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IDictionary<string, string> RouteValues { get; set; }
 
         [JsonProperty("additionalData", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public IDictionary AdditionalData { get; set; }

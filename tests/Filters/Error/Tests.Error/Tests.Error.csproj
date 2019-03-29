@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Filters\Error\Error.csproj" />
+    <ProjectReference Include="..\..\..\..\src\Filters\Error\Error.csproj" />
   </ItemGroup>
 
 </Project>

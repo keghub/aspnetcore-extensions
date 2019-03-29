@@ -38,7 +38,6 @@ namespace Tests.Filters
             Assert.That(error.Error, Is.EqualTo(exceptionInfo.EventId.Name));
             Assert.That(error.Message, Is.EqualTo(formattedMessage));
             Assert.That(error.Data, Is.SameAs(exceptionInfo.State));
-            Assert.That(error.RouteValues, Is.SameAs(context.ActionDescriptor.RouteValues));
             Assert.That(error.AdditionalData, Is.Null.Or.Not.ContainKey(ExceptionExtensions.ExceptionInfoKey));
         }
 
@@ -60,7 +59,6 @@ namespace Tests.Filters
             Assert.That(error.Error, Is.Null);
             Assert.That(error.Message, Is.Not.Null);
             Assert.That(error.Data, Is.Null );
-            Assert.That(error.RouteValues, Is.SameAs(context.ActionDescriptor.RouteValues));
             Assert.That(error.AdditionalData, Is.Null.Or.Not.ContainKey(ExceptionExtensions.ExceptionInfoKey));
 
         }
