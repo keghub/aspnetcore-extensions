@@ -17,13 +17,13 @@ namespace Tests
     [TestFixture]
     public class JwtMiddlewareTests
     {
-        [Test, BasicAutoData]
+        [Test, CustomAutoData]
         public void Constructor_is_guarded_against_nulls(GuardClauseAssertion assertion)
         {
             assertion.Verify(typeof(JwtMiddleware).GetConstructors());
         }
 
-        [Test, BasicAutoData]
+        [Test, CustomAutoData]
         public async Task Invoke_returns_401_if_no_match([Frozen] IUserExtractor extractor, JwtMiddleware sut, [Frozen] IServiceProvider serviceProvider, HttpContext context, JwtOptions options, IActionResultExecutor<ObjectResult> executor)
         {
             User user = null;
@@ -37,7 +37,7 @@ namespace Tests
             Mock.Get(executor).Verify(p => p.ExecuteAsync(It.IsAny<ActionContext>(), It.Is<ObjectResult>(or => or.StatusCode == 401)));
         }
 
-        [Test, BasicAutoData]
+        [Test, CustomAutoData]
         public async Task Invoke_returns_200_with_token_if_match([Frozen] IUserAuthenticator authenticator, [Frozen] IUserExtractor extractor, JwtMiddleware sut, [Frozen] IServiceProvider serviceProvider, HttpContext context, JwtOptions options, IActionResultExecutor<ObjectResult> executor, User user, ClaimsIdentity identity)
         {
             Mock.Get(extractor).Setup(p => p.TryExtractUser(It.IsAny<HttpContext>(), out user)).Returns(true);
