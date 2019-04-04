@@ -96,7 +96,7 @@ Task("RunTests")
                 var projectFile = MakeAbsolute(file).ToString();
 
                 var dotCoverSettings = new DotCoverCoverSettings()
-                                        .WithFilter("+:EMG*")
+                                        .WithFilter("+:EMG.Extensions*")
                                         .WithFilter("-:Tests*")
                                         .WithFilter("-:TestUtils");
 
