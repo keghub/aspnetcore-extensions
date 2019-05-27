@@ -86,7 +86,7 @@ namespace EMG.Extensions.AspNetCore
 
     public class TokenModel
     {
-        [JsonProperty("accessToken")]
+        [JsonProperty("access_token")]
         public string AccessToken { get; set; }
 
         [JsonProperty("expires_in")]

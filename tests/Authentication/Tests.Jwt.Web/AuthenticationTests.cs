@@ -45,7 +45,7 @@ namespace Tests
 
                     var obj = JObject.Parse(body);
 
-                    token = obj["accessToken"].Value<string>();
+                    token = obj["access_token"].Value<string>();
                 }
             }
 
